@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pub-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pub-gateway
+  template:
+    metadata:
+      labels:
+        app: pub-gateway
+    spec:
+      containers:
+        - image: datowl/pubgate
+          name: cinema-gateway
+          ports:
+            - containerPort: 8080
+              name: pub-gateway
